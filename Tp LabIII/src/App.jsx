@@ -1,17 +1,19 @@
-import './App.css'
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './AuthContext';
 import Login from './components/Login';
-
+import Dashboard from './components/Dashboard'; // Asegúrate de crear este componente
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        {/* Definir la ruta para el componente Login */}
-        <Route path="/login" element={<Login />} />
-        {/* Puedes agregar más rutas aquí para otros componentes */}
-      </Routes>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 
